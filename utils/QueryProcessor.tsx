@@ -20,19 +20,20 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.includes("largest")) {
-    const num = query.slice(46, query.length)
-    const arr = num.split(", ").map(Number)
-    return(
-      (Math.max(...arr)).toString()
-    );
+    const addMatch = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
+    if (addMatch) {
+      const numArray = [parseInt(addMatch[1]), parseInt(addMatch[2]), parseInt(addMatch[3])]
+      return Math.max(...numArray).toString();
+    }
   }
 
   if (query.includes("plus")) {
-    const firstNum = query.slice(8, 10)
-    const secondNum = query.slice(15, 17)
-    return(
-      (parseInt(firstNum) + parseInt(secondNum)).toString()
-    );
+    const addMatch = query.match(/What is (\d+) plus (\d+)/);
+    if (addMatch) {
+      const x: number = parseInt(addMatch[1]);
+      const y: number = parseInt(addMatch[2]);
+      return (x+y).toString();
+    }
   }
   
 
