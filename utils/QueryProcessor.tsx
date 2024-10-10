@@ -81,5 +81,14 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.includes("power")) {
+    const addMatch = query.match(/What is (\d+) to the power of (\d+)/);
+    if (addMatch) {
+      const x: number = parseInt(addMatch[1]);
+      const y: number = parseInt(addMatch[2]);
+      return (Math.pow(x, y)).toString();
+    }
+  }
+
   return "";
 }
