@@ -64,5 +64,21 @@ export default function QueryProcessor(query: string): string {
   }
   
 
+  if (query.includes("prime")) {
+    const addMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)?/)
+    if (addMatch) {
+      const numArray = [parseInt(addMatch[1]), parseInt(addMatch[2]), parseInt(addMatch[3]), parseInt(addMatch[4]), parseInt(addMatch[5])]
+      const primes = numArray.filter(num => {
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) {
+            return false;
+          }
+        }
+        return num > 1;
+      })
+      
+    }
+  }
+
   return "";
 }
