@@ -77,7 +77,7 @@ export default function QueryProcessor(query: string): string {
         }
         return num > 1;
       })
-      
+      return primes.join(", ");
     }
   }
 
