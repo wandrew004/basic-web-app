@@ -19,5 +19,22 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.includes("largest")) {
+    const num = query.slice(46, query.length)
+    const arr = num.split(", ").map(Number)
+    return(
+      (Math.max(...arr)).toString()
+    );
+  }
+
+  if (query.includes("plus")) {
+    const firstNum = query.slice(8, 10)
+    const secondNum = query.slice(15, 17)
+    return(
+      (parseInt(firstNum) + parseInt(secondNum)).toString()
+    );
+  }
+  
+
   return "";
 }
